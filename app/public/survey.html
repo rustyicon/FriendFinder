@@ -112,11 +112,11 @@
         <div class="modal-content">
             <div class="modal-header">
                 <span class="close">&times;</span>
-                <h2>Modal Header</h2>
+                <h2>Matches</h2>
             </div>
             <div class="modal-body">
-                <p id="someText">Some text in the Modal Body</p>
-                <p id="userImg">Some other text...</p>
+                <p id="someText"></p>
+                <p id="userImg"></p>
             </div>
             <div class="modal-footer">
                 <h3>Modal Footer</h3>
@@ -156,7 +156,7 @@ $("#hidden").click(function(event) {
 
 $.post("api/friends", newFriend, function(data) {
 		$("#matchName").text(data.name);
-	    		$('#matchImg').attr("src", data.photo);
+	    		$('#userImg').attr("src", data.photo);
 
 		    	// Show the modal with the best match 
 		    	$("#resultsModal").modal('toggle');

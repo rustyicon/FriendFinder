@@ -6,7 +6,7 @@ var fs = require("fs");
 
 var app = express();
 
-var port = 3000;
+var port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.text());
@@ -23,6 +23,3 @@ app.post("/new", function(req, res){
 app.listen(3000, function (){
 	console.log("listening on port: " + 3000);
 });
-
-
-
