@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <title>Survey Questions</title>
 </head>
 
@@ -14,15 +15,14 @@
     <form>
         Name(Required):
         <br>
-        <input type="text" name="name">
+        <input id="name" type="text" name="">
         <br> Link to Photo Image(Required):
         <br>
-        <input type="file" name="pic" id="image">
+        <input id="image" type="file" name="">
         <br>
         <hr>
         <h3>What's you're favorite color?</h3>
-        
-        <select>
+        <select id="q1">
             <option value="one">Lilac</option>
             <option value="two">Opal</option>
             <option value="three">Lemon Chiffon</option>
@@ -30,8 +30,7 @@
             <option value="five">Ultramarine</option>
         </select>
         <h3>Pick your Spirit Animal</h3>
-      
-        <select>
+        <select id="q2">
             <option value="one">Grummpy Cat</option>
             <option value="two">Bernie Sanders</option>
             <option value="three">Mermaid</option>
@@ -39,8 +38,7 @@
             <option value="five">Kermit the Frog</option>
         </select>
         <h3>You're in a zombie apocalypse, which weapon do you take?</h3>
-        
-        <select>
+        <select id="q3">
             <option value="one">Flare Gun, and hide</option>
             <option value="two">Frying Pan</option>
             <option value="three">Shot Gun</option>
@@ -48,7 +46,7 @@
             <option value="five">Flame Thrower</option>
         </select>
         <h3>Pick a Sport</h3>
-        <select>
+        <select id="q4">
             <option value="one">Arm Wrestling</option>
             <option value="two">Beer Pong</option>
             <option value="three">Chess</option>
@@ -56,7 +54,7 @@
             <option value="five">Fantasy Football</option>
         </select>
         <h3>Pick your Favorite Type of Food</h3>
-        <select>
+        <select id="q5">
             <option value="one">Dim Sum</option>
             <option value="two">Taco's</option>
             <option value="three">Masala Dosa</option>
@@ -64,8 +62,7 @@
             <option value="five">Sushi</option>
         </select>
         <h3>I Wouldnt be Caught dead without my</h3>
-      
-        <select>
+        <select id="q6">
             <option value="one">90's Gameboy</option>
             <option value="two">Phone</option>
             <option value="three">Underwear</option>
@@ -73,8 +70,7 @@
             <option value="five">Wallet</option>
         </select>
         <h3>Pick a Character</h3>
-        
-        <select>
+        <select id="q7">
             <option value="one">Tyler Durden</option>
             <option value="two">Lumpy Space Princess</option>
             <option value="three">John Hammond</option>
@@ -82,7 +78,7 @@
             <option value="five">Mia Wallace</option>
         </select>
         <h3>Pick a Planet</h3>
-        <select>
+        <select id="q8">
             <option value="one">Saturn</option>
             <option value="two">Mars</option>
             <option value="three">Jupiter</option>
@@ -90,8 +86,7 @@
             <option value="five">Uranus</option>
         </select>
         <h3>Pick a Fandom</h3>
-      
-        <select>
+        <select id="q9">
             <option value="one">Walking Dead</option>
             <option value="two">The Bachlor</option>
             <option value="three">Game of Thrones</option>
@@ -99,8 +94,7 @@
             <option value="five">Star Wars</option>
         </select>
         <h3>Favorite Jean Cut</h3>
-        
-        <select>
+        <select id="q10">
             <option value="one">Overalls</option>
             <option value="two">Short Shorts</option>
             <option value="three">Skinny Jeans</option>
@@ -109,7 +103,7 @@
         </select>
         <br>
         <br>
-        <input type="submit" id="hidden modal" value="Submit">
+        <input type="submit" id="hidden" value="Submit">
     </form>
     <hr>
     <!-- The Modal -->
@@ -130,15 +124,45 @@
         </div>
     </div>
     <footer>
-       <a href="home.html">Home</a>	&nbsp;|	&nbsp;<a href="api/friends">API Friends</a>
+        <a href="home.html">Home</a> &nbsp;| &nbsp;<a href="api/friends">API Friends</a>
     </footer>
 <style>
-	
-
-footer{
-	display:inline;
-}
+    footer {
+        display: inline;
+    }
 </style>
+
 </body>
 
 </html>
+<script type="text/javascript">
+$("#hidden").click(function(event) {
+    event.preventDefault();
+
+    var newFriend = {
+        name: $("#name").val().trim();
+        img: $("#image").val().trim();
+        scores: : [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val(), ]
+    }
+
+    span.onclick = function() {
+        modal.style.display = "none";
+
+    }
+
+}
+	console.log(newFriend);
+});
+
+$.post("api/friends", newFriend, function(data) {
+		$("#matchName").text(data.name);
+	    		$('#matchImg').attr("src", data.photo);
+
+		    	// Show the modal with the best match 
+		    	$("#resultsModal").modal('toggle');
+
+	    	});
+	
+ // replace these id with your best mathcing firned
+
+</script>
